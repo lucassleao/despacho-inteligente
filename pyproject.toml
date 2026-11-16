@@ -1,0 +1,9 @@
+[project]
+name = "despacho-inteligente"
+version = "0.1.0"
+description = "Simulador de entregas que recomenda viagens extras ao entregador quando um pedido atrasa."
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
