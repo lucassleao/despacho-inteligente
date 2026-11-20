@@ -18,7 +18,7 @@ class Restaurante:
     id: int
     nome: str
     local: Ponto
-    tempo_preparo_medio_min: int  # Tempo médio de preparo em minutos
+    tempo_preparo_medio_min: float  # Tempo médio de preparo em minutos
 
 
 @dataclass

@@ -154,6 +154,25 @@ Use o método **STAR**: **S**ituação, **T**arefa, **A**ção, **R**esultado. E
 
 ---
 
+## 8. Simulação e dados sintéticos (aula da `cidade.py`)
+
+### ❓ "Por que criar um `random.Random(seed)` próprio em vez de usar `random.random()`?"
+> "O `random` do módulo é **global**: qualquer outra parte do código que sorteie algo muda a sequência, e a simulação deixa de ser reproduzível. Um gerador próprio, criado com a seed e passado adiante como parâmetro, garante que a mesma seed gera sempre o mesmo dia. Isso também facilita testar."
+
+### ❓ "Como sortear pontos uniformemente dentro de um círculo?"
+> "Sorteio um ângulo uniforme e uma distância igual a `raio × sqrt(u)`, com `u` uniforme entre 0 e 1. Sem a raiz, os pontos se concentram no centro, porque a área de um anel cresce com o raio: a borda precisa receber mais pontos que o miolo."
+
+### ❓ "Como você modelou os atrasos da cozinha? Por que assim?"
+> "Com uma **mistura de distribuições**: 75% dos pedidos seguem uma normal centrada na média do restaurante (variação pequena) e 25% recebem um atraso grande, uniforme entre 8 e 25 min. Na vida real, a maioria dos pedidos é normal e uma minoria atrasa muito (cozinha lotada). Uma distribuição só não captura essas duas situações."
+
+### ❓ "O que você faz quando o sorteio gera um valor impossível?"
+> "Coloco uma **trava de sanidade**. Por exemplo, `max(5, preparo)`: a normal pode sortear um preparo negativo, o que não existe. Dados impossíveis na simulação viram bugs estranhos lá na frente."
+
+### ❓ "Por que converter km em graus de um jeito diferente pra latitude e longitude?"
+> "Um grau de latitude vale sempre ~111 km. Já o grau de longitude encolhe conforme se afasta do Equador, por um fator `cos(latitude)`. Em São Paulo, ele vale ~102 km."
+
+---
+
 ## ✅ Checklist antes da entrevista
 - [ ] Sei explicar meu projeto em **1 minuto** e em **5 minutos**
 - [ ] Tenho o link do GitHub com README bom e testes passando
